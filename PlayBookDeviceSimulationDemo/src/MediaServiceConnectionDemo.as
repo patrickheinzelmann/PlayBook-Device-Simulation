@@ -53,6 +53,7 @@ package
 			mediaServiceConnection.addEventListener(MediaServiceRequestEvent.TRACK_PAUSE, handleMediaRequestTrackPause);
 			mediaServiceConnection.addEventListener(MediaServiceRequestEvent.TRACK_PLAY, handleMediaRequestTrackPlay);
 			mediaServiceConnection.addEventListener(MediaServiceRequestEvent.TRACK_PREV, handleMediaRequestTrackPrev);
+			mediaServiceConnection.addEventListener(MediaServiceConnectionEvent.DATAFLOW_CHANGE, handleMediaServiceDataFlowChange);
 			
 		}
 		
@@ -78,6 +79,20 @@ package
 				isPlaying = true
 				mediaServiceConnection.setPlayState(isPlaying);
 				trace("MediaService Access changed: Has AudioService");
+				sendMetaData();
+			}else{
+				trace("MediaService Access changed: Lost AudioService");
+			}
+		}
+		
+		private function handleMediaServiceDataFlowChange(event:MediaServiceConnectionEvent):void
+		{
+			sendMetaData();
+		}
+		
+		private function sendMetaData():void
+		{
+			if(mediaServiceConnection.canSendData()){
 				/**
 				 * Infos from Last.fm ;)
 				 * http://www.lastfm.de/api/show?service=356
@@ -89,11 +104,9 @@ package
 				object.duration = 239000;
 				object.albumArtwork = "http://userserve-ak.last.fm/serve/300x300/41161483.png";
 				mediaServiceConnection.sendMetadata(object);
-			}else{
-				trace("MediaService Access changed: Lost AudioService");
 			}
 		}
-		
+														  
 		private function handleMediaRequestTrackNext(event:MediaServiceRequestEvent):void
 		{
 			trace("MediaService request next track")

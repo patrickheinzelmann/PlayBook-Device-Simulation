@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<qnx>
+   <initialWindow>
+      <systemChrome>none</systemChrome>
+      <transparent>false</transparent>
+   </initialWindow>
+
+   <author>Patrick Heinzelmann</author>
+   <buildId>2</buildId>
+   <platformVersion>1.0.0.0</platformVersion>
+   <action>use_camera</action>
+   <action>read_geolocation</action>
+   <action>play_audio</action>
+   <action>read_device_identifying_information</action>
+</qnx>

@@ -29,10 +29,6 @@ package
 			initQNXApplication();
 			addEventHandlers();
 			
-			CONFIG::adl{
-				qnxApplication.openFile("/Users/Patrick/Desktop/BuildingAIRApplications.pdf");
-			}
-			
 			CONFIG::playbook{
 				var supportFileTypes:Vector.<String> = qnx.system.QNXApplication.supportedFileTypes;
 			}
@@ -56,23 +52,21 @@ package
 		public function addEventHandlers():void
 		{
 			qnxApplication.addEventListener(QNXApplicationEvent.LOW_MEMORY, handleLowMemory);
-			qnxApplication.addEventListener(QNXApplicationEvent.SWIPE_START, handleSwipeStart);
 			qnxApplication.addEventListener(QNXApplicationEvent.SWIPE_DOWN, handleSwipeDown);
 		}
 		
 		public function handleLowMemory(event:QNXApplicationEvent):void
 		{
-			trace("Playbook has low memory");
-		}
-		
-		public function handleSwipeStart(event:QNXApplicationEvent):void
-		{
-			trace("Swipe Start");
+			trace("Playbook has low memory");	
 		}
 		
 		public function handleSwipeDown(event:QNXApplicationEvent):void
 		{
 			trace("Swipe down");
+			
+			CONFIG::adl{
+				qnxApplication.openFile("/Users/Patrick/Desktop/BuildingAIRApplications.pdf");
+			}
 		}
 	}
 }

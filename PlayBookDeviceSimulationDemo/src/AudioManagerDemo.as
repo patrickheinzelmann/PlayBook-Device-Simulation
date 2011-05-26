@@ -7,10 +7,6 @@ package
 	import flash.display.StageScaleMode;
 	
 	import qnx.events.AudioManagerEvent;
-	import qnx.notificationManager.Notification;
-	import qnx.notificationManager.NotificationInterface;
-	import qnx.notificationManager.NotificationManager;
-	import qnx.notificationManager.NotificationProvider;
 	import qnx.system.AudioManager;
 	import qnx.system.AudioOutput;
 	
@@ -41,9 +37,6 @@ package
 			trace("Connected Input: "+audioManager.connectedOutput);
 			trace("Output Level: "+audioManager.getOutputLevel());
 			trace("Output Mute: "+audioManager.getOutputMute());
-			
-			trace("Bluetooth Level: "+audioManager.getOutputLevel(AudioOutput.BLUETOOTH));
-			trace("HDMI Mute: "+audioManager.getOutputMute(AudioOutput.HDMI));	
 				
 		}
 		
